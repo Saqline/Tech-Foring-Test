@@ -2,14 +2,8 @@ from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.timezone import now
-from rest_framework import serializers, viewsets, permissions
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework_simplejwt.tokens import RefreshToken
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
 
-# Models
+
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)

@@ -1,6 +1,12 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import UserViewSet, ProjectViewSet, TaskViewSet, CommentViewSet
+
+from pm_api.views.users import UserViewSet
+from pm_api.views.comments import CommentViewSet
+from pm_api.views.projects import ProjectViewSet
+from pm_api.views.tasks import TaskViewSet
+
+
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet, basename='user')
