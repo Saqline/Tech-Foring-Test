@@ -1,1 +1,4 @@
-django-rest-framework-nested
+django
+djangorestframework
+djangorestframework-simplejwt
+drf-spectacular

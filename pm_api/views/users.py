@@ -27,6 +27,8 @@ class UserViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         user = User.objects.create_user(
             username=serializer.validated_data['username'],
+            first_name=serializer.validated_data['first_name'],
+            last_name=serializer.validated_data['last_name'],
             email=serializer.validated_data['email'],
             password=request.data['password']
         )
@@ -41,8 +43,8 @@ class UserViewSet(viewsets.ModelViewSet):
         if user and user.check_password(serializer.validated_data['password']):
             refresh = RefreshToken.for_user(user)
             return Response({
+                'access-token': str(refresh.access_token),
                 'refresh': str(refresh),
-                'access': str(refresh.access_token),
             })
         return Response({"error": "Invalid credentials"}, status=400)
     
